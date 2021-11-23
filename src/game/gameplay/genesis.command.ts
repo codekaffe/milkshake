@@ -17,7 +17,7 @@ import {
 } from '../../helpers/send-error-message';
 import { IMilkshakeClient } from '../../interfaces';
 import { AccountModel } from '../../models/account.model';
-import { MedievalFantasyWorldModel } from '../world/world';
+import { WorldModel } from '../world/world';
 import { flagIndex } from '../flags/flag-index';
 import { CommandEvent } from '../interfaces';
 
@@ -41,7 +41,7 @@ export default new Command({
       user = await AccountModel.create({ _id: userId });
     }
 
-    const worlds = await MedievalFantasyWorldModel.find({
+    const worlds = await WorldModel.find({
       guildId: event.guild!.id,
     });
     if (worlds.length > 0) {
@@ -105,7 +105,7 @@ export default new Command({
         ),
     );
 
-    const world = new MedievalFantasyWorldModel({
+    const world = new WorldModel({
       creatorId: userId,
       guildId: event.guild!.id,
       name: worldName,

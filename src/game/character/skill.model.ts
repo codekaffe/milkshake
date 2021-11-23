@@ -29,7 +29,7 @@ export class Skill {
     type: () => String,
     enum: Object.keys(Ranks),
   })
-  public rank!: string;
+  public rank!: keyof typeof Ranks;
 
   @prop({ required: true, type: () => [String] })
   public requiredFlags!: string[];

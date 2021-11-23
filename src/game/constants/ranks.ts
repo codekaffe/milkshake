@@ -1,7 +1,6 @@
 // The {} are placeholders
 export const Ranks = {
-  SSS: {},
-  SS: {},
+  'S+': {},
   S: {},
   A: {},
   B: {},

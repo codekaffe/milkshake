@@ -60,4 +60,4 @@ export class World {
   }
 }
 
-export const MedievalFantasyWorldModel = getModelForClass(World);
+export const WorldModel = getModelForClass(World);

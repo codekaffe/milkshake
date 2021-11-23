@@ -11,7 +11,7 @@ import { getCommandUser, sendMessage } from '../../helpers/send-error-message';
 
 import { IMilkshakeClient } from '../../interfaces';
 import { AccountModel } from '../../models/account.model';
-import { MedievalFantasyWorldModel } from '../world/world';
+import { WorldModel } from '../world/world';
 
 export default new Command({
   name: 'world',
@@ -27,7 +27,7 @@ export default new Command({
       user = await AccountModel.create({ _id: author.id });
     }
 
-    const worlds = await MedievalFantasyWorldModel.find({
+    const worlds = await WorldModel.find({
       guildId: msg.guild!.id,
     });
     if (!worlds.length) {

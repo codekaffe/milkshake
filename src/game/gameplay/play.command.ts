@@ -11,7 +11,7 @@ import Prompter from 'chop-prompter';
 import { sendErrorMessage } from '../../helpers/send-error-message';
 import { IMilkshakeClient } from '../../interfaces';
 import { AccountModel } from '../../models/account.model';
-import { MedievalFantasyWorldModel } from '../world/world';
+import { WorldModel } from '../world/world';
 import { flagIndex } from '../flags/flag-index';
 
 export default new Command({
@@ -26,7 +26,7 @@ export default new Command({
       user = await AccountModel.create({ _id: msg.author.id });
     }
 
-    const world = await MedievalFantasyWorldModel.findOne({
+    const world = await WorldModel.findOne({
       guildId: msg.guild!.id,
     });
     if (!world) {

@@ -1,3 +1,7 @@
+/**
+ * A character is a player, NPC or monster in the game.
+ */
+
 import { prop, getModelForClass, modelOptions } from '@typegoose/typegoose';
 
 import { Account } from '../../models/account.model';
@@ -58,10 +62,12 @@ export class Character {
   public gold!: number;
 
   @prop({ _id: false, required: true, type: () => CharacterSkills })
-  public characterSkills!: CharacterSkills[];
+  public skills!: CharacterSkills[];
+
+  // TODO: add titles
 
   public canLearnSkill(skill: Skill): boolean {
-    return !this.characterSkills.some((cs) => cs.skillId === skill._id);
+    return !this.skills.some((cs) => cs.skillId === skill._id);
   }
 }
 
