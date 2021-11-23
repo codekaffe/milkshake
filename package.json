@@ -1,0 +1,55 @@
+{
+  "name": "milkshake",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "test": "jest",
+    "test:watch": "jest --watch --coverage=false",
+    "lint": "eslint src --fix",
+    "format": "prettier src --write",
+    "fix": "npm run format && npm run lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@types/tracery-grammar": "^2.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-unicorn": "^36.0.0",
+    "jest": "^27.2.2",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.4.1",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.8.2",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@refabric/loader": "^1.1.4",
+    "@refabric/text": "^1.1.4",
+    "@typegoose/typegoose": "^9.2.0",
+    "chop-prompter": "github:Chop-Bot/chop-prompter",
+    "discord-api-types": "^0.24.0",
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "got": "^11.8.2",
+    "mongoose": "^6.0.12",
+    "nanocolors": "^0.2.13",
+    "sensum": "^1.1.0",
+    "tracery-grammar": "^2.7.4",
+    "ulid": "^2.3.0"
+  }
+}
