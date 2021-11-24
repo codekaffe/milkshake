@@ -8,9 +8,9 @@ export class Logger {
   }
 
   static debug(...args: any[]): void {
-    if (process.env.NODE_ENV === 'development') {
-      console.log(bold(cyan('[DEBUG]')), ...args);
-    }
+    // if (process.env.NODE_ENV === 'development') {
+    // }
+    console.log(bold(cyan('[DEBUG]')), ...args);
   }
 
   static error(...args: any[]): void {

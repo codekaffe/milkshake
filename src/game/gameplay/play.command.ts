@@ -8,11 +8,17 @@ import {
 import { Command, IBotMessage, Permission } from 'sensum';
 import Prompter from 'chop-prompter';
 
-import { sendErrorMessage } from '../../helpers/send-error-message';
+import {
+  sendErrorMessage,
+  sendMessage,
+} from '../../helpers/send-error-message';
 import { IMilkshakeClient } from '../../interfaces';
 import { AccountModel } from '../../models/account.model';
 import { WorldModel } from '../world/world';
 import { flagIndex } from '../flags/flag-index';
+import { CharacterModel } from '../character/character.model';
+import { ActionTypes } from '../constants/action-types';
+import { Logger } from '../../logging/logger';
 
 export default new Command({
   name: 'play',
@@ -37,6 +43,30 @@ export default new Command({
       return;
     }
 
+    // Character selection
+    const characters = await CharacterModel.find({ accountId: user._id });
+    if (!characters.length) {
+      // TODO: Summon truck-kun and isekai this person
+    }
+
+    // TODO: If player is already performing an action, don't show the menu. Just progress the action.
+
     // do game logic
+    const row = new MessageActionRow();
+    const menu = new MessageSelectMenu()
+      .setCustomId('player_action')
+      .setPlaceholder('Nothing selected');
+
+    for (const [actionName, action] of Object.entries(ActionTypes)) {
+      menu.addOptions({
+        label: action.menuLabel,
+        value: actionName,
+        // description: '',
+        emoji: action.menuEmoji,
+      });
+    }
+    row.addComponents(menu);
+
+    await sendMessage(msg, { content: 'What will you do?', components: [row] });
   },
 });

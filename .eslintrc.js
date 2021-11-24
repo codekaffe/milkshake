@@ -29,6 +29,7 @@ module.exports = {
     'unicorn/prefer-object-from-entries': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     'unicorn/numeric-separators-style': 'off',
+    'unicorn/prefer-ternary': 'off',
   },
   ignorePatterns: ['dist/*', '.eslintrc.js'],
 };

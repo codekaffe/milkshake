@@ -9,6 +9,7 @@ import {
 } from 'discord.js';
 import { IBotMessage } from 'sensum';
 import { MessageContent } from '../game/interfaces';
+import { Logger } from '../logging/logger';
 
 export async function sendErrorMessage(
   channel: TextChannel,
