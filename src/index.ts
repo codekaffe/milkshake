@@ -13,7 +13,7 @@ import config, { clientId, testGuild } from './config';
 import { Logger } from './logging/logger';
 import { connect } from './config/db';
 import { IMilkshakeClient } from './interfaces';
-import { Intents } from 'discord.js';
+import { Collection, Intents } from 'discord.js';
 
 class App {
   public bot: IMilkshakeClient;
@@ -38,6 +38,8 @@ class App {
         ],
       },
     ) as IMilkshakeClient;
+    (this.bot as any).interactions = new Collection();
+    (this.bot as any).menus = new Collection();
     this.db = null!;
   }
 

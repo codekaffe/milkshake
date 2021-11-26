@@ -2,11 +2,11 @@ import {
   MessageActionRow,
   MessageEmbed,
   MessageSelectMenu,
+  SelectMenuInteraction,
   TextChannel,
 } from 'discord.js';
 
 import { Command, IBotMessage, Permission } from 'sensum';
-import Prompter from 'chop-prompter';
 
 import {
   sendErrorMessage,
@@ -26,6 +26,18 @@ export default new Command({
   description: 'Play the game.',
   permission: Permission.USER,
   runIn: ['guild'],
+  init(bot: IMilkshakeClient) {
+    bot.interactions.set(
+      'player_action',
+      async (bot: IMilkshakeClient, interaction: SelectMenuInteraction) => {
+        console.log('interaction: ', interaction);
+        Logger.log(`${interaction.user.tag} used ${interaction.values}`);
+        await interaction.reply({
+          content: `You used ${interaction.values}!`,
+        });
+      },
+    );
+  },
   async run(bot: IMilkshakeClient, msg: IBotMessage) {
     let user = await AccountModel.findById(msg.author.id);
     if (!user) {

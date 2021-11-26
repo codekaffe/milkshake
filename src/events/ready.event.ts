@@ -1,4 +1,5 @@
 import { EventHandler } from 'sensum';
+
 import { Logger } from '../logging/logger';
 
 export default new EventHandler({
